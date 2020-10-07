@@ -38,8 +38,40 @@ class Person
     
     attr_reader :happiness_points 
     attr_reader :hygiene_points
-    attr_reader :name    
+    attr_reader :name   
+    
+    def happy?
+        if self.happiness_points > 7
+            return true
+        end
+        false
+    end
+
+    def clean?
+        if self.hygiene_points > 7
+            return true
+        end
+        false
+    end
+
+    def get_paid(salary)
+        self.bank_account += salary
+        return "all about the benjamins"
+    end
+
+    def take_bath
+        self.hygiene_points += 4
+        return "♪ Rub-a-dub just relaxing in the tub ♫"
+    end 
+
+    def work_out
+        self.hygiene_points -= 3
+        self.happiness_points += 2
+        return "♪ another one bites the dust ♫"
+    end
+
 end
 
 bryce = Person.new("Bryce")
 akram = Person.new("Akram")
+anne = Person.new("Anne")
