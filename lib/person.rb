@@ -5,9 +5,9 @@ class Person
     def initialize(name)
         @name = name 
         @bank_account = 25.00
-        @happiness_points = 8
-        @hygiene_points = 8
-        binding.pry
+        @happiness= 8
+        @hygiene = 8
+        
     end 
 
     def bank_account
@@ -18,37 +18,37 @@ class Person
         @bank_account = money 
     end 
 
-    def happiness_points=(points)
-        @happiness_points = points 
-        if @happiness_points > 10
-            @happiness_points = 10
-        elsif @happiness_points < 0
-            @happiness_points = 0
+    def happiness=(points)
+        @happiness = points 
+        if @happiness > 10
+            @happiness = 10
+        elsif @happiness < 0
+            @happiness = 0
         end 
     end 
 
-    def hygiene_points=(points)
-        @hygiene_points = points
-        if @hygiene_points > 10
-            @hygiene_points = 10
-        elsif @hygiene_points < 0
-            @hygiene_points = 0
+    def hygiene=(points)
+        @hygiene = points
+        if @hygiene > 10
+            @hygiene = 10
+        elsif @hygiene < 0
+            @hygiene = 0
         end 
     end 
     
-    attr_reader :happiness_points 
-    attr_reader :hygiene_points
+    attr_reader :happiness 
+    attr_reader :hygiene
     attr_reader :name   
     
     def happy?
-        if self.happiness_points > 7
+        if self.happiness > 7
             return true
         end
         false
     end
 
     def clean?
-        if self.hygiene_points > 7
+        if self.hygiene > 7
             return true
         end
         false
@@ -60,18 +60,39 @@ class Person
     end
 
     def take_bath
-        self.hygiene_points += 4
+        self.hygiene += 4
         return "♪ Rub-a-dub just relaxing in the tub ♫"
     end 
 
     def work_out
-        self.hygiene_points -= 3
-        self.happiness_points += 2
+        self.hygiene -= 3
+        self.happiness += 2
         return "♪ another one bites the dust ♫"
     end
 
+    def call_friend(friend)
+        self.happiness += 3
+        friend.happiness +=3
+        return "Hi #{friend.name}! It's #{self.name}. How are you?"
+    end 
+
+    def start_conversation(person,topic)
+        if topic == "politics"
+            self.happiness -= 2
+            person.happiness -= 2
+            return "blah blah partisan blah lobbyist"
+        elsif topic == "weather"
+            self.happiness += 1
+            person.happiness += 1
+            return "blah blah sun blah rain"
+        else 
+            return "blah blah blah blah blah"
+        end 
+
+    end 
 end
 
 bryce = Person.new("Bryce")
 akram = Person.new("Akram")
 anne = Person.new("Anne")
+
