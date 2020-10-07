@@ -10,7 +10,6 @@ class Person
         binding.pry
     end 
 
-
     def bank_account
         @bank_account 
     end 
@@ -19,32 +18,28 @@ class Person
         @bank_account = money 
     end 
 
-    attr_accessor :happiness_points 
-    attr_accessor :hygiene_points
-    attr_reader :name
-    attr_writer
+    def happiness_points=(points)
+        @happiness_points = points 
+        if @happiness_points > 10
+            @happiness_points = 10
+        elsif @happiness_points < 0
+            @happiness_points = 0
+        end 
+    end 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-end 
+    def hygiene_points=(points)
+        @hygiene_points = points
+        if @hygiene_points > 10
+            @hygiene_points = 10
+        elsif @hygiene_points < 0
+            @hygiene_points = 0
+        end 
+    end 
+    
+    attr_reader :happiness_points 
+    attr_reader :hygiene_points
+    attr_reader :name    
+end
 
 bryce = Person.new("Bryce")
 akram = Person.new("Akram")
